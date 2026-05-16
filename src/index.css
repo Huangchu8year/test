@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&family=Cinzel:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Cinzel", serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  
+  --color-klein-blue: #002FA7;
+  --color-sacred-gold: #D4AF37;
+  --color-blueprint-bg: #FCFDFF;
+}
+
+@layer base {
+  body {
+    @apply bg-blueprint-bg text-gray-900 selection:bg-klein-blue selection:text-white;
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+  }
+}
+
+.blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 47, 167, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 47, 167, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.blueprint-grid-fine {
+  background-image: 
+    linear-gradient(to right, rgba(0, 47, 167, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 47, 167, 0.03) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 30s linear infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(-2px, -1px); }
+  60% { transform: translate(2px, 1px); }
+  80% { transform: translate(2px, -1px); }
+  100% { transform: translate(0); }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.perspective-1000 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.glass-morphism {
+  @apply bg-white/40 backdrop-blur-md border border-white/20;
+}
